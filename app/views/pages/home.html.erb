@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "flat_img.jpg" %>'); background-size: cover;">
+  <div class="container">
+    <h1>Airbnb CLone <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p> </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-md-6 offset-sm-2 offset-md-4 mt-5">
+    <div class="card-category" style="background-image: url('<%= image_path "flat_img.jpg" %>'); background-size: cover;">
+    </div>
+      <ul class="list-inline mt-5 text-center">
+        <li class="list-inline-item">
+          <%= link_to "Louer son appartement", "#", class: "btn btn-outline-primary"  %>
+        </li>
+        <li class="list-inline-item">
+           <%= link_to "Trouver vos vacances de rêve", "#", class: "btn btn-outline-primary"  %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
