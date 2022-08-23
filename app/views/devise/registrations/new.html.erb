@@ -8,18 +8,6 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :first_name,
-                required: true,
-                hint: ("Put your first name here..."),
-                input_html: { autocomplete: "off" } %>
-    <%= f.input :last_name,
-                required: true,
-                hint: ("Put your last name here..."),
-                input_html: { autocomplete: "off" } %>
-    <%= f.input :telephone,
-                required: true,
-                hint: ("Put your phone number here..."),
-                input_html: { autocomplete: "off" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -29,7 +17,7 @@
                 input_html: { autocomplete: "new-password" } %>
   </div>
 
-  <div class="form-actions btn btn-primary" >
+  <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
