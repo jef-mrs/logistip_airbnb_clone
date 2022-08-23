@@ -14,5 +14,4 @@ class User < ApplicationRecord
   def confirm_user
     self.confirm
   end
-
 end
