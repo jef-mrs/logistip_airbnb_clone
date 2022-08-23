@@ -8,4 +8,11 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :telephone, :email, presence: true
   validates :email, uniqueness: true
+
+  after_create :confirm_user
+
+  def confirm_user
+    self.confirm
+  end
+
 end
