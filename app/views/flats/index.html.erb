@@ -1,4 +1,27 @@
-<h1>FLAT</h1>
-<% @flats.each do |flat| %>
-<h2><%= flat.title %></h2>
-<% end %>
+<h3 class='mt-5'>Trouver votre destination de rêve</h3>
+
+
+<div class="cards mt-3">
+  <% @flats.each do |flat| %>
+  <%= link_to flat_path(flat), class: "link-show" do  %>
+    <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= flat.title %></h2>
+          <p><%= flat.address.capitalize %></p>
+          <p><%= flat.description.capitalize %></p>
+          <p><%= flat.capacity %>
+            <% if flat.capacity > 1 %>
+              personnes
+            <% else %>
+              personne
+            <% end %>
+          </p>
+        </div>
+        <h2 class="card-trip-pricing"><%= flat.price_per_day %>€/Day</h2>
+      </div>
+    </div>
+   <% end %>
+  <% end %>
+</div>
