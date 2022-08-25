@@ -14,4 +14,7 @@ class BookingsController < ApplicationController
 
   # def update [P3]
   # end
+
+
+# COUCOU LES GARS
 end
