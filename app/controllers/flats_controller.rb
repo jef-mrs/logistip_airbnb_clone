@@ -27,6 +27,31 @@ class FlatsController < ApplicationController
     authorize @flat
   end
 
+  def edit
+    @flat = Flat.find(params[:id])
+    authorize @flat
+  end
+
+  def update
+    @flat = Flat.find(params[:id])
+    @flat.update_attribute(:photo, params[:flat][:photo])
+    authorize @flat
+
+    if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    authorize @flat
+
+    redirect_to flats_path
+  end
+
   private
 
   def flat_params
