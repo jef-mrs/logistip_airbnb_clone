@@ -1,8 +1,26 @@
-<h2><%= @flat.title %></h2>
-<p><%= @flat.address %></p>
-<p><%= @flat.price_per_day %></p>
-<p><%= @flat.capacity %></p>
-<p><%= @flat.description %></p>
-<% if @flat.photo.attached? %>
-  <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+ <% if  @flat.photo.attached?%>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @flat.photo.key %>'); background-size: cover;">
+    <div class="container">
+      <h2 class='text-center' style="color:white; text-shadow: 0 0 10 rgba(0, 0, 0, 0.5); text-border: 2px solid black"><%= @flat.title %></h2>
+    </div>
+  </div>
+   <% else %>
+  <h2 class='text-center'><%= @flat.title %></h2>
+  <% end %>
+
+
+<div class="text-center mt-5">
+  <p>Localisation : <%= @flat.address %></p>
+  <p><%= @flat.price_per_day %>€/Jour</p>
+  <p><%= @flat.capacity %> Personnes</p>
+  <p><%= @flat.description %></p>
+  <% if @flat.user == current_user %>
+    <%= link_to 'delete', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+
+  <% if @flat.user == current_user %>
+    <%= link_to 'edit', edit_flat_path(@flat) %>
+  <% end %>
+  <%= link_to 'back', flats_path %>
+</div>
