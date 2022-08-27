@@ -16,23 +16,23 @@
   <p><%= @flat.capacity %> Personnes</p>
   <p><%= @flat.description %></p>
   <% if @flat.user == current_user %>
-    <%= link_to 'delete', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" } %>
+    <%= link_to 'delete', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
   <% end %>
 
   <% if @flat.user == current_user %>
-    <%= link_to 'edit', edit_flat_path(@flat) %>
+    <%= link_to 'edit', edit_flat_path(@flat), class:"btn btn-dark" %>
   <% end %>
-  <%= link_to 'back', flats_path %>
+  <%= link_to 'back', flats_path, class:"btn btn-dark" %>
 </div>
 
 <% if @flat.user != current_user %>
 <div class="container" style='width: 600px; margin: 12px auto'>
   <p>Vous souhaitez réserver ce logement?</p>
     <%= simple_form_for([@flat, @booking]) do |f| %>
-      <%= f.input :number_of_occupants %>
+      <%= f.input :number_of_occupants, collection: (1..@flat.capacity)%>
       <%= f.input :starting_date %>
       <%= f.input :ending_date %>
-      <%= f.submit 'Submit', class: "btn btn-outline-warning" %>
+      <%= f.submit 'Submit', class: "btn btn-dark" %>
     <% end %>
 </div>
 <% end %>
