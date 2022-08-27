@@ -1,0 +1,66 @@
+<%# Les bookings  %>
+<h3 class='mt-5'>Toutes vos réservations</h3>
+
+
+<div class="cards mt-3">
+  <% @bookings.each do |booking| %>
+  <%= link_to flat_path(booking.flat), class: "link-show" do  %>
+    <div class="card-trip">
+      <% if booking.flat.photo.attached? %>
+        <%= cl_image_tag booking.flat.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= booking.flat.title %></h2>
+          <p><%= booking.status %></p>
+          <p><%= booking.starting_date %></p>
+          <p><%= booking.ending_date %></p>
+          <p><%= booking.number_of_occupants %>
+            <% if booking.number_of_occupants > 1 %>
+              personnes
+            <% else %>
+              personne
+            <% end %>
+          </p>
+        </div>
+        <h2 class="card-trip-pricing"><%= booking.total_price.round%>€</h2>
+      </div>
+    </div>
+   <% end %>
+  <% end %>
+</div>
+
+<%# Les flats %>
+<h3 class='mt-5'>Toutes vos offres de logement</h3>
+
+
+<div class="cards mt-3">
+  <% @flats.each do |flat| %>
+  <%= link_to flat_path(flat), class: "link-show" do  %>
+    <div class="card-trip">
+      <% if flat.photo.attached? %>
+        <%= cl_image_tag flat.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= flat.title %></h2>
+          <p><%= flat.address.capitalize %></p>
+          <p><%= flat.description.capitalize %></p>
+          <p><%= flat.capacity %>
+            <% if flat.capacity > 1 %>
+              personnes
+            <% else %>
+              personne
+            <% end %>
+          </p>
+        </div>
+        <h2 class="card-trip-pricing"><%= flat.price_per_day %>€/Day</h2>
+      </div>
+    </div>
+   <% end %>
+  <% end %>
+</div>
