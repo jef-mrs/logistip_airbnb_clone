@@ -1,14 +1,14 @@
-<div class="container text-center p-2" style='width: 400px margin: 12px auto' >
-<h1>CREATE NEW FLAT</h1>
+<div class="container text-center p-2" style='width: 400px; margin: 12px auto' >
+  <h1>CREATE NEW FLAT</h1>
 
-<br>
-<%= simple_form_for(@flat) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :capacity %>
-  <%= f.input :price_per_day %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit 'Submit', class: "btn btn-outline-warning" %>
-<% end %>
+  <br>
+  <%= simple_form_for(@flat) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :capacity %>
+    <%= f.input :price_per_day %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit 'Submit', class: "btn btn-outline-warning" %>
+  <% end %>
 </div>

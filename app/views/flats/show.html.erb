@@ -26,6 +26,7 @@
 </div>
 
 <% if @flat.user != current_user %>
+<div class="container" style='width: 600px; margin: 12px auto'>
   <p>Vous souhaitez réserver ce logement?</p>
     <%= simple_form_for([@flat, @booking]) do |f| %>
       <%= f.input :number_of_occupants %>
@@ -33,4 +34,5 @@
       <%= f.input :ending_date %>
       <%= f.submit 'Submit', class: "btn btn-outline-warning" %>
     <% end %>
+</div>
 <% end %>

@@ -1,4 +1,6 @@
 <%# Les bookings  %>
+
+<div class="container mx-3">
 <h3 class='mt-5'>Toutes vos réservations</h3>
 
 
@@ -63,4 +65,30 @@
     </div>
    <% end %>
   <% end %>
+</div>
+
+<h3 class='mt-5'>Tous vos logements résérvés</h3>
+
+<div class="cards mt-3">
+  <% @flats.each do |flat| %>
+    <% flat.bookings.each do |booking| %>
+      <%= link_to flat_path(booking.flat), class: "link-show" do  %>
+        <div class="card-trip">
+          <% if flat.photo.attached? %>
+            <%= cl_image_tag booking.flat.photo.key, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> du <%= booking.starting_date %> au <%= booking.ending_date %></h2>
+              <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= booking.total_price %>€ </h2>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
 </div>
