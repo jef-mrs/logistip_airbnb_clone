@@ -4,12 +4,13 @@ class PagePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def home?
-      true
+  def home?
+    true
     end
 
-    def dashboard?
-      true
+  def dashboard?
+    true
     end
   end
