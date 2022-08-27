@@ -84,7 +84,7 @@
               <h2> du <%= booking.starting_date %> au <%= booking.ending_date %></h2>
               <p><%= booking.user.first_name %> <%= booking.user.last_name %></p>
             </div>
-            <h2 class="card-trip-pricing"><%= booking.total_price %>€ </h2>
+            <h2 class="card-trip-pricing"><%= booking.total_price.round %>€ </h2>
           </div>
         </div>
       <% end %>
