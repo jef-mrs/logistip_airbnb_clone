@@ -60,14 +60,14 @@
             <% end %>
           </p>
         </div>
-        <h2 class="card-trip-pricing"><%= flat.price_per_day %>€/Day</h2>
+        <h2 class="card-trip-pricing"><%= flat.price_per_day.round %>€/Day</h2>
       </div>
     </div>
    <% end %>
   <% end %>
 </div>
 
-<h3 class='mt-5'>Tous vos logements résérvés</h3>
+<h3 class='mt-5'>Vos appartements: réservations à confirmer</h3>
 
 <div class="cards mt-3">
   <% @flats.each do |flat| %>
