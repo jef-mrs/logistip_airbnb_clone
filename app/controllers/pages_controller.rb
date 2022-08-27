@@ -3,4 +3,11 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @flats = Flat.all.where(user: current_user)
+    @bookings = Booking.all.where(user: current_user)
+    @user = current_user
+  end
+
 end
