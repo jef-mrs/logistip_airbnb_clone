@@ -8,9 +8,9 @@ class PagePolicy < ApplicationPolicy
 
   def home?
     true
-    end
+  end
 
   def dashboard?
     true
-    end
   end
+end
