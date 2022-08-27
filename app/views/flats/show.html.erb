@@ -24,3 +24,13 @@
   <% end %>
   <%= link_to 'back', flats_path %>
 </div>
+
+<% if @flat.user != current_user %>
+  <p>Vous souhaitez réserver ce logement?</p>
+    <%= simple_form_for([@flat, @booking]) do |f| %>
+      <%= f.input :number_of_occupants %>
+      <%= f.input :starting_date %>
+      <%= f.input :ending_date %>
+      <%= f.submit 'Submit', class: "btn btn-outline-warning" %>
+    <% end %>
+<% end %>
