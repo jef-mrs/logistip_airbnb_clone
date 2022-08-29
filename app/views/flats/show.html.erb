@@ -1,12 +1,12 @@
 
- <% if  @flat.photo.attached?%>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @flat.photo.key %>'); background-size: cover;">
-    <div class="container">
-      <h2 class='text-center' style="color:white; text-shadow: 0 0 10 rgba(0, 0, 0, 0.5); text-border: 2px solid black"><%= @flat.title %></h2>
+  <% if  @flat.photo.attached?%>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @flat.photo.key %>'); background-size: cover;">
+      <div class="container">
+        <h2 class='text-center' style="color:white; text-shadow: 0 0 10 rgba(0, 0, 0, 0.5); text-border: 2px solid black"><%= @flat.title %></h2>
+      </div>
     </div>
-  </div>
-   <% else %>
-  <h2 class='text-center'><%= @flat.title %></h2>
+  <% else %>
+    <h2 class='text-center'><%= @flat.title %></h2>
   <% end %>
 
 
@@ -30,8 +30,8 @@
   <p>Vous souhaitez réserver ce logement?</p>
     <%= simple_form_for([@flat, @booking]) do |f| %>
       <%= f.input :number_of_occupants, collection: (1..@flat.capacity)%>
-      <%= f.input :starting_date %>
-      <%= f.input :ending_date %>
+      <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker" } %>
+      <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.submit 'Submit', class: "btn btn-dark" %>
     <% end %>
 </div>
