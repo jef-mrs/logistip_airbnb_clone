@@ -5,8 +5,9 @@
       class: "form-control",
       placeholder: "Où souhaitez-vous aller?"
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-dark" %>
   <% end %>
+<%# Pour inclure des filtres de recherches: https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/ %>
 <div class="cards mt-3">
   <% @flats.each do |flat| %>
   <%= link_to flat_path(flat), class: "link-show" do  %>
