@@ -34,6 +34,7 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'devise'
 gem 'pundit'
 gem 'cloudinary', '~> 1.16.0'
+gem 'geocoder'
 
  #Search
   gem 'pg_search', '~> 2.3.0'
