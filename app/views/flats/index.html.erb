@@ -1,6 +1,12 @@
 <h3 class='mt-5'>Trouver votre destination de rêve</h3>
-
-
+  <%= form_tag flats_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Où souhaitez-vous aller?"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
 <div class="cards mt-3">
   <% @flats.each do |flat| %>
   <%= link_to flat_path(flat), class: "link-show" do  %>

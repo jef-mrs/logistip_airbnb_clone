@@ -2,7 +2,12 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @flats = policy_scope(Flat).order(created_at: :desc)
+    if params[:query].present?
+      @flats = policy_scope(Flat).search_by_title_and_address(params[:query]).order(created_at: :desc)
+      # @flats = Flat.search_by_title_and_address(params[:query])
+    else
+      @flats = policy_scope(Flat).order(created_at: :desc)
+    end
   end
 
   def new
