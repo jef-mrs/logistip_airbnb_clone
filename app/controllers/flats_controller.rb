@@ -3,6 +3,13 @@ class FlatsController < ApplicationController
 
   def index
     @flats = policy_scope(Flat).order(created_at: :desc)
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { flat: flat })
+      }
+    end
   end
 
   def new
@@ -35,9 +42,8 @@ class FlatsController < ApplicationController
 
   def update
     @flat = Flat.find(params[:id])
-    @flat.update_attribute(:photo, params[:flat][:photo])
+    @flat.update(flat_params)
     authorize @flat
-
     if @flat.save
       redirect_to flat_path(@flat)
     else
