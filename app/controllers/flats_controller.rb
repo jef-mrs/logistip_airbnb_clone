@@ -14,6 +14,7 @@ class FlatsController < ApplicationController
         lng: flat.longitude,
         info_window: render_to_string(partial: "info_window", locals: { flat: flat })
       }
+    end
   end
 
   def new
