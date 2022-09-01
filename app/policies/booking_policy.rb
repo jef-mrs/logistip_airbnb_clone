@@ -9,6 +9,11 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+
+  def validate?
+    true
+  end
+
   def show?
     true
   end
