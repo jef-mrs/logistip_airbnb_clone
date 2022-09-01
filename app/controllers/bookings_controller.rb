@@ -14,8 +14,37 @@ class BookingsController < ApplicationController
     end
   end
 
-  # def update [P3]
-  # end
+def show
+  @booking = Booking.find(params[:id])
+  @flat = Flat.find(@booking[:flat_id])
+  authorize @booking
+  authorize @flat
+end
+
+def edit
+  @booking = Booking.find(params[:id])
+  authorize @booking
+end
+
+def update
+  @booking = Booking.find(params[:id])
+  @booking.update(booking_params)
+  @booking.total_price = (@booking.ending_date - @booking.starting_date) * @booking.flat.price_per_day
+  authorize @booking
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :edit
+    end
+end
+
+def destroy
+  @booking = Booking.find(params[:id])
+  authorize @booking
+  @booking.destroy
+
+  redirect_to dashboard_path
+end
 
   def validate
     @booking = Booking.find(params[:id])

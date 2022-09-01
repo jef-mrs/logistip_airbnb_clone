@@ -9,7 +9,20 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+
   def validate?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def update?
+    true
+  end
+
+  def destroy?
     true
   end
 end
