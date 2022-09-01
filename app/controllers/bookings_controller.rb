@@ -17,9 +17,24 @@ class BookingsController < ApplicationController
   # def update [P3]
   # end
 
-private
+  def validate
+    @booking = Booking.find(params[:id])
+    @booking.update(validate_params)
+    authorize @booking
+    if @booking.save
+      redirect_to dashboard_path
+    else
+      root_path
+    end
+  end
+
+  private
 
   def booking_params
     params.require(:booking).permit(:number_of_occupants, :starting_date, :ending_date)
+  end
+
+  def validate_params
+    params.require(:booking).permit(:status)
   end
 end
