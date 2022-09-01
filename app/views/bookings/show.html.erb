@@ -10,13 +10,16 @@
 
 
 <div class="text-center mt-5">
-  <p>Localisation : <%= @flat.address %></p>
+  <p>Adresse de l'appartement : <%= @flat.address %></p>
+  <br>
+  <h3>Statut de la réservation</h3>
+  <p><%= @booking.status %> par le propriétaire de l'appartement !</p>
   <br>
   <h3>Détails de ma réservation</h3>
-  <p>Starting Date : <%= @booking.starting_date %></p>
-  <p>Ending Date : <%= @booking.ending_date %></p>
-  <p>Number of occupants : <%= @booking.number_of_occupants %> Personnes</p>
-  <p>Total Price : <%= @booking.total_price %> €</p>
+  <p>Date d'arrivée : <%= @booking.starting_date %></p>
+  <p>Date de départ : <%= @booking.ending_date %></p>
+  <p>Nombre d'occupants : <%= @booking.number_of_occupants %> Personnes</p>
+  <p>Prix Total : <%= @booking.total_price %> €</p>
     <% if @booking.user == current_user %>
     <%= link_to 'delete', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
   <% end %>
