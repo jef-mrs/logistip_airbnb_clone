@@ -6,8 +6,8 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :address %>
-    <%= f.input :capacity %>
-    <%= f.input :price_per_day %>
+    <%= f.input :capacity, input_html: { min: 0, step: 1 } %>
+    <%= f.input :price_per_day, input_html: { min: 0, step: 'any' } %>
     <%= f.input :photo, as: :file %>
     <%= f.submit 'Submit', class:"btn btn-dark" %>
   <% end %>
