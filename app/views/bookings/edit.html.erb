@@ -1,0 +1,11 @@
+  <% if @booking.user_id == current_user.id %>
+  <div class="container" style='width: 600px; margin: 12px auto'>
+    <p>Vous souhaitez modifier votre réservation ?</p>
+      <%= simple_form_for([@flat, @booking]) do |f| %>
+        <%= f.input :number_of_occupants, collection: (1..@booking.flat.capacity)%>
+        <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker" } %>
+        <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.submit 'Submit', class: "btn btn-dark" %>
+      <% end %>
+  <% end %>
+  </div>
