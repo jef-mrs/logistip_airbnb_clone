@@ -67,13 +67,15 @@
   <% end %>
 </div>
 
+
+<%# Les réservations à valider/refuser  %>
 <h3 class='mt-5'>Vos appartements: réservations à confirmer</h3>
 
 <div class="cards mt-3">
   <% @flats.each do |flat| %>
     <% flat.bookings.each do |booking| %>
       <div class="card-trip">
-        <%= link_to flat_path(booking.flat), class: 'link-show' do  %>
+        <%= link_to booking_path(booking), class: 'link-show' do  %>
           <% if flat.photo.attached? %>
             <%= cl_image_tag booking.flat.photo.key, height: 300, width: 400, crop: :fill %>
           <% else %>
