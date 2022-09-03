@@ -37,6 +37,13 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @booking = Booking.new
+    @bookings       = @flat.bookings
+    @bookings_dates = @bookings.map do |booking|
+      {
+        from: booking.starting_date,
+        to: booking.ending_date
+      }
+    end
     authorize @flat
   end
 

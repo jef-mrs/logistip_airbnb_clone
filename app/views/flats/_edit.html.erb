@@ -1,0 +1,22 @@
+<div class="container" style='width: 600px; margin: 12px auto' >
+<h1>Modifier votre appartement</h1>
+
+<br>
+<%= simple_form_for(@flat) do |f| %>
+  <div class="d-flex justify-content-around">
+    <div>
+      <%= f.input :title, label:"Nom de l'appartement" %>
+      <%= f.input :description %>
+      <%= f.input :address, label:'Adresse' %>
+    </div>
+    <div style='width: 150px;'>
+      <%= f.input :capacity, label: 'Nombre de personnes' %>
+      <%= f.input :price_per_day, label: 'Prix à la journée' %>
+      <%= f.input :photo, as: :file %>
+    </div>
+  </div>
+  <div class="mt-5 text-center">
+    <%= f.submit 'Modifier', class:"btn btn-dark", remote: true %>
+  </div>
+<% end %>
+</div>

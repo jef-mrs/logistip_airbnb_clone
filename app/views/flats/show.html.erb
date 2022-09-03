@@ -9,38 +9,61 @@
     <h2 class='text-center'><%= @flat.title %></h2>
   <% end %>
 
+<div class="container p-5">
+  <div class="row ">
+    <div class="col md-6 text-center">
+      <div style='width: 600px; margin: 12px auto'>
+        <p><%= @flat.address %></p>
+        <p><%= @flat.description %></p>
+        <% if  @flat.photo.attached?%>
+          <%= cl_image_tag @flat.photo.key, width: 500, height: 400, crop: :fill %>
+        <% end %>
+        <div>
+        <ul class='list-inline'>
+          <li class="list-inline-item me-5 mt-2"><i class="fa-sharp fa-solid fa-euro-sign"></i> <%= @flat.price_per_day %>€/Jour</li>
+          <li class="list-inline-item ms-5 mt-2"><i class="fa-sharp fa-solid fa-users"></i> <%= @flat.capacity %></i></li>
+        </ul>
 
-<div class="text-center mt-5">
-  <p>Localisation : <%= @flat.address %></p>
-  <p><%= @flat.price_per_day %>€/Jour</p>
-  <p><%= @flat.capacity %> Personnes</p>
-  <p><%= @flat.description %></p>
-  <% if @flat.user == current_user %>
-    <%= link_to 'delete', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
-  <% end %>
+          <% if @flat.user == current_user %>
+            <%= link_to 'Supprimer', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
+        </div>
+      </div>
+    </div>
+    <div class="col md-6" >
+      <%=  render 'edit' %>
+    </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-  <% if @flat.user == current_user %>
-    <%= link_to 'edit', edit_flat_path(@flat), class:"btn btn-dark" %>
-  <% end %>
-  <%= link_to 'back', flats_path, class:"btn btn-dark" %>
+    <div class="col-md-6">
+      <div  style="height=1000px">
+        <% if user_signed_in? %>
+          <% if @flat.user != current_user %>
+          <div  style='width: 600px; margin: 12px auto'>
+            <p>Vous souhaitez réserver ce logement?</p>
+              <%= simple_form_for([@flat, @booking]) do |f| %>
+                <%= f.input :number_of_occupants, collection: (1..@flat.capacity), label: "Nombre de personnes"%>
+                <div id="booking-form-div"
+                  data-bookings="<%= @bookings_dates.to_json %>">
+                </div>
+                <%= f.input :starting_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none" } %>
+                <%= f.input :ending_date,label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none"} %>
+                <%= f.submit 'Réservez', class: "btn btn-dark", remote: true %>
+              <% end %>
+          </div>
+          <% end %>
+        <% else %>
+          <div class="container position-absolute top-50 start-50 translate-middle" style='width: 600px; margin: 12px auto'>
+          <p class='text-center'>Vous devez être connecté pour réserver cet appartement</p>
+            <p class="text-center"><%= link_to 'Sign me in!', new_user_session_path, class: 'btn btn-dark' %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5">
+    <%= link_to 'Retour', flats_path, class:"btn btn-dark" %>
+  </div>
 </div>
-
-
-<% if user_signed_in? %>
-  <% if @flat.user != current_user %>
-  <div class="container" style='width: 600px; margin: 12px auto'>
-    <p>Vous souhaitez réserver ce logement?</p>
-      <%= simple_form_for([@flat, @booking]) do |f| %>
-        <%= f.input :number_of_occupants, collection: (1..@flat.capacity)%>
-        <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker" } %>
-        <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.submit 'Submit', class: "btn btn-dark" %>
-      <% end %>
-  </div>
-  <% end %>
-<% else %>
-  <div class="container" style='width: 600px; margin: 12px auto'>
-   <p class='text-center'>Vous devez être connecté pour réserver cet appartement</p>
-    <p class="text-center"><%= link_to 'Sign me in!', new_user_session_path, class: 'btn btn-dark' %></p>
-  </div>
-<% end %>
