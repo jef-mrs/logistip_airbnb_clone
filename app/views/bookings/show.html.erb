@@ -42,7 +42,7 @@
         <% if @booking.user == current_user %>
           <%= link_to 'Modifier', edit_booking_path(@booking), class:"btn btn-dark" %>
         <% end %>
-        <%= link_to 'Précédent', booking_path(@booking), class:"btn btn-dark" %>
+        <%= link_to 'Précédent', dashboard_path, class:"btn btn-dark" %>
     </div>
   </div>
 </div>
