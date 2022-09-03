@@ -25,7 +25,7 @@
         </ul>
 
           <% if @flat.user == current_user %>
-            <%= link_to 'Supprimer', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
+
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
       <div  style="height=1000px">
         <% if user_signed_in? %>
           <% if @flat.user != current_user %>
-          <div  style='width: 600px; margin: 12px auto'>
+          <div  style='width: 600px; margin: 6px auto 54px'>
             <p>Vous souhaitez réserver ce logement?</p>
               <%= simple_form_for([@flat, @booking]) do |f| %>
                 <%= f.input :number_of_occupants, collection: (1..@flat.capacity), label: "Nombre de personnes"%>
@@ -50,7 +50,7 @@
                 </div>
                 <%= f.input :starting_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none" } %>
                 <%= f.input :ending_date,label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none"} %>
-                <%= f.submit 'Réservez', class: "btn btn-dark", remote: true %>
+                <%= f.submit 'Je réserve', class: "btn btn-dark", remote: true %>
               <% end %>
           </div>
           <% end %>
@@ -63,7 +63,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-2">
+  <div class="text-center mt">
     <%= link_to 'Retour', flats_path, class:"btn btn-dark" %>
   </div>
 </div>
