@@ -23,6 +23,14 @@ end
 
 def edit
   @booking = Booking.find(params[:id])
+  @flat = @booking.flat
+  @bookings = @flat.bookings.where(status: 'Accepté')
+  @bookings_dates = @bookings.map do |booking|
+    {
+      from: booking.starting_date,
+      to: booking.ending_date
+    }
+  end
   authorize @booking
 end
 

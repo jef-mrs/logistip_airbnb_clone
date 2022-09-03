@@ -1,11 +1,15 @@
   <% if @booking.user_id == current_user.id %>
   <div class="container" style='width: 600px; margin: 12px auto'>
     <p>Vous souhaitez modifier votre réservation ?</p>
-      <%= simple_form_for([@flat, @booking]) do |f| %>
-        <%= f.input :number_of_occupants, collection: (1..@booking.flat.capacity)%>
-        <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker" } %>
-        <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.submit 'Submit', class: "btn btn-dark" %>
-      <% end %>
+        <%= simple_form_for([ @booking]) do |f| %>
+          <%= f.input :number_of_occupants, collection: (1..@flat.capacity), label: "Nombre de personnes"%>
+          <div id="booking-form-div"
+            data-bookings="<%= @bookings_dates.to_json %>">
+          </div>
+          <%= f.input :starting_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none" } %>
+          <%= f.input :ending_date,label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none"} %>
+          <%= f.submit 'Réservez', class: "btn btn-dark", remote: true %>
+        <% end %>
+        <%= link_to 'Retour', dashboard_path, class: "btn btn-dark mt-3"  %>
   <% end %>
   </div>
