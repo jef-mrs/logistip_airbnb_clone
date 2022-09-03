@@ -37,7 +37,7 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @booking = Booking.new
-    @bookings       = @flat.bookings
+    @bookings       = @flat.bookings.where(status: 'Accepté').or(@flat.bookings.where(status: 'En cours'))
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.starting_date,
