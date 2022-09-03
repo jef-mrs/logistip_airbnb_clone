@@ -1,16 +1,36 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url "home_banner.jpg" %>'); background-size: cover;">
-  <div class="container">
-    <h1>Trouvez le logement <strong>idéal</strong> pour vos vacances parmis des <strong>milliers</strong>  d'appartement mis en ligne par nos hôtes partenaires</h1>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
+  <div class="carousel-inner text-center">
+    <div class="carousel-item active" style="background-image: url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)">
+      Trouvez le logement idéal pour vos vacances
+    </div>
+    <div class="carousel-item text-center" style="background-image: url(https://images.unsplash.com/photo-1599056554583-9bc4d7581ba0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1675&q=80)">
+      Parmi des milliers d'appartement
+    </div>
+    <div class="carousel-item text-center" style="background-image: url(https://images.unsplash.com/photo-1505832018823-50331d70d237?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2108&q=80)">
+      Tout autour du monde
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
 
-
-  <div class="d-flex justify-content-around mt-5">
-    <div class="card-category" style="background-image: url('<%= image_path "home_CTA_owner.jpg" %>'); background-size: cover;">
-      <%= link_to "Louer son appartement", "/flats/new", class: "btn btn-dark" %>
-    </div>
-    <div class="card-category" style="background-image: url('<%= image_path "home_CTA_user.jpg" %>'); background-size: cover;">
-      <%= link_to "Trouver vos vacances de rêve", "/flats", class: "btn btn-dark"  %>
-    </div>
+<div class="d-flex justify-content-around mt-5">
+  <div class="card-category" style="background-image: url('<%= image_path "home_CTA_owner.jpg" %>'); background-size: cover;">
+     <%= link_to "Louer son appartement", "/flats/new", class: "btn btn-dark" %>
   </div>
-
+  <div class="card-category" style="background-image: url('<%= image_path "home_CTA_user.jpg" %>'); background-size: cover;">
+    <%= link_to "Trouver vos vacances de rêve", "/flats", class: "btn btn-dark"  %>
+  </div>
+</div>
