@@ -10,6 +10,6 @@
           <%= f.input :ending_date,label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none"} %>
           <%= f.submit 'Réservez', class: "btn btn-dark", remote: true %>
         <% end %>
-        <%= link_to 'Précendent', dashboard_path, class: "btn btn-dark mt-3"  %>
+        <%= link_to 'Précédent', booking_path(@booking), class: "btn btn-dark mt-3"  %>
   <% end %>
   </div>
