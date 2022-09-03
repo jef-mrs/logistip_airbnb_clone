@@ -1,17 +1,19 @@
 <h3 class='mt-5'>Trouver votre destination de rêve</h3>
-<div style="width: 100%; height: 400px;"
+<div style="width: 100%; height: 300px;"
   data-controller="mapbox"
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-  <%= form_tag flats_path, method: :get do %>
+<br>
+  <div><%= form_tag flats_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "Où souhaitez-vous aller?"
     %>
+    <br>
     <%= submit_tag "Search", class: "btn btn-dark" %>
   <% end %>
+  </div>
 <%# Pour inclure des filtres de recherches: https://www.justinweiss.com/articles/search-and-filter-rails-models-without-bloating-your-controller/ %>
 
 <div class="cards mt-3">

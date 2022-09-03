@@ -11,21 +11,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-
           <li class="nav-item active">
-            <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+            <%= link_to "Mon Tableau de Bord", dashboard_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", class: "navbar-avatar", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false if current_user.photo.attached? %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete , class: "dropdown-item"%>
+              <%= link_to "Mon Profil", edit_user_registration_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Trouver l'appartement de vos rêves", flats_path, class: "dropdown-item" %>
+              <%= link_to "Mettre un appartement en location",  new_flat_path, class: "dropdown-item" %>
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete , class: "dropdown-item"%>
             </div>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Je me connecte", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>

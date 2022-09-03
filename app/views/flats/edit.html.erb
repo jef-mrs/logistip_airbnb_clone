@@ -1,5 +1,5 @@
 <div class="container text-center p-2" style='width: 400px; margin: 12px auto' >
-<h1>EDIT FLAT</h1>
+<h1>Mettre à jour les données de mon appartement</h1>
 
 <br>
 <%= simple_form_for(@flat) do |f| %>
@@ -9,6 +9,6 @@
   <%= f.input :capacity %>
   <%= f.input :price_per_day %>
   <%= f.input :photo, as: :file %>
-  <%= f.submit 'Submit', class:"btn btn-dark" %>
+  <%= f.submit 'Mettre à jour', class:"btn btn-dark" %>
 <% end %>
 </div>
