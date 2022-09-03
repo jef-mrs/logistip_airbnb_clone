@@ -1,31 +1,40 @@
 <div class="container text-center p-2" style='width: 400px; margin: 12px auto' >
-  <h2>Sign up</h2>
+  <h2>Création de compte</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
+      <%= f.input :photo,
+                  as: :file,
+                  label: "Photo de profil",
+                  required: true %>
       <%= f.input :first_name,
-                  required: true %>
+                  required: true,
+                  label: "Prénom" %>
       <%= f.input :last_name,
-                  required: true %>
+                  required: true,
+                  label: "Nom" %>
       <%= f.input :telephone,
-                  required: true%>
+                  required: true,
+                  label: "Numéro de Téléphone"%>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
+                  label: "Mot de passe",
                   required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+                  hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "Saisissez votre mot de passe" } %>
       <%= f.input :password_confirmation,
                   required: true,
-                  input_html: { autocomplete: "new-password" } %>
+                  label: "Confirmation du mot de passe",
+                  input_html: { autocomplete: "Confirmez votre mot de passe" } %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class:"btn btn-dark"%>
+      <%= f.button :submit, "Créér mon compte", class:"btn btn-dark"%>
     </div>
   <% end %>
 
