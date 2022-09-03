@@ -3,11 +3,11 @@
 
   <br>
   <%= simple_form_for(@flat) do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :address %>
-    <%= f.input :capacity, input_html: { min: 0, step: 1 } %>
-    <%= f.input :price_per_day, input_html: { min: 0, step: 'any' } %>
+    <%= f.input :title, label: "Prix par nuit" %>
+    <%= f.input :description, label: "Description de l'appartement" %>
+    <%= f.input :address, label: "Adresse" %>
+    <%= f.input :capacity, input_html: { min: 0, step: 1 }, label: "Capacité d'accueil" %>
+    <%= f.input :price_per_day, input_html: { min: 0, step: 'any' }, label: "Prix par nuit" %>
     <%= f.input :photo, as: :file %>
     <%= f.submit 'Mettre à jour', class:"btn btn-dark" %>
   <% end %>
