@@ -8,23 +8,41 @@
     <h2 class='text-center'><%= @flat.title %></h2>
   <% end %>
 
-
-<div class="text-center mt-5">
-  <p>Adresse de l'appartement : <%= @flat.address %></p>
-  <br>
-  <h3>Statut de la réservation</h3>
-  <p><%= @booking.status %> par le propriétaire de l'appartement !</p>
-  <br>
-  <h3>Détails de ma réservation</h3>
-  <p>Date d'arrivée : <%= @booking.starting_date %></p>
-  <p>Date de départ : <%= @booking.ending_date %></p>
-  <p>Nombre d'occupants : <%= @booking.number_of_occupants %> Personnes</p>
-  <p>Prix Total : <%= @booking.total_price %> €</p>
-    <% if @booking.user == current_user %>
-    <%= link_to 'delete', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
-  <% end %>
-  <% if @booking.user == current_user %>
-    <%= link_to 'edit', edit_booking_path(@booking), class:"btn btn-dark" %>
-  <% end %>
-  <%= link_to 'back', dashboard_path, class:"btn btn-dark" %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="text-center mt-5">
+        <br>
+        <h3>Statut de la réservation</h3>
+        <% if @booking.status == 'Accepté' %>
+        <div class="booking-status-accepté">
+          <span> Votre réservation a été acceptée par le propriétaire.</span>
+        </div>
+        <% elsif  @booking.status == 'En cours' %>
+        <div class="booking-status-en-cours">
+          <span> Votre réservation est en cours d'examen par le propriétaire.</span>
+        </div>
+        <% else %>
+        <div class="booking-status-refusé">
+          <span> Votre réservation a été refusée par le propriétaire.</span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-6">
+        <br>
+        <h3>Détails de ma réservation</h3>
+        <p>Date d'arrivée : <%= @booking.starting_date %></p>
+        <p>Date de départ : <%= @booking.ending_date %></p>
+        <p>Nombre d'occupants : <%= @booking.number_of_occupants %> Personnes</p>
+        <p>Prix Total : <%= @booking.total_price %> €</p>
+          <% if @booking.user == current_user %>
+          <%= link_to 'delete', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
+        <% end %>
+        <% if @booking.user == current_user %>
+          <%= link_to 'edit', edit_booking_path(@booking), class:"btn btn-dark" %>
+        <% end %>
+        <%= link_to 'back', dashboard_path, class:"btn btn-dark" %>
+    </div>
+  </div>
 </div>
