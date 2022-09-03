@@ -37,7 +37,7 @@
         <p>Nombre d'occupants : <%= @booking.number_of_occupants %> Personnes</p>
         <p>Prix Total : <%= @booking.total_price %> €</p>
           <% if @booking.user == current_user %>
-          <%= link_to 'Supprimez', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
+          <%= link_to 'Supprimer', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark" %>
         <% end %>
         <% if @booking.user == current_user %>
           <%= link_to 'Modifier', edit_booking_path(@booking), class:"btn btn-dark" %>

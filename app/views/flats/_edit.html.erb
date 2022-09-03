@@ -1,4 +1,4 @@
-<div class="container" style='width: 600px; margin: 96px auto 12px' >
+<div class="container" style='width: 600px; margin: 36px auto 12px' >
 <h1>Modifier votre appartement</h1>
 
 <br>
@@ -17,6 +17,8 @@
   </div>
   <div class="mt-5 text-center">
     <%= f.submit 'Modifier', class:"btn btn-dark", remote: true %>
+     <%= link_to 'Supprimer', flat_path(@flat), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark ms-5" %>
   </div>
 <% end %>
+
 </div>
